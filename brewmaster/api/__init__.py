@@ -1,5 +1,5 @@
 import requests
-import os
+from app import app
 
 
 class API:
@@ -24,7 +24,7 @@ class API:
 class BrewerydbAPI(API):
     """BreweryDB API Class"""
     def __init__(self):
-        url = 'http://api.brewerydb.com/v2'
-        key = os.environ.get('BREWERY_DB_API_KEY')
+        url = app.config['BREWERYDB_API_URL']
+        key = app.config['BREWERYDB_API_KEY']
 
         API.__init__(self, url, key)
