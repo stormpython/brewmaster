@@ -39,6 +39,11 @@ class MySQL(object):
             kwargs['charset'] = self.app.config['MYSQL_DATABASE_CHARSET']
         return pymysql.connect(**kwargs)
 
+    def execute(self, query):
+        conn = self.connect()
+        cur = conn.cursor()
+        return cur.execute(query)
+
     def before_request(self):
         ctx = _app_ctx_stack.top
         ctx.pymysql = self.connect()
