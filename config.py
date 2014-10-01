@@ -3,6 +3,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
+    # Flask application key
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
 
     # MySQL database connection info
