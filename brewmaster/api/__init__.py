@@ -21,7 +21,7 @@ class API:
             print 'There was an error'
 
 
-class BreweryDbAPI(API):
+class BrewerydbAPI(API):
     """BreweryDB API Class"""
     def __init__(self):
         url = 'http://api.brewerydb.com/v2'
