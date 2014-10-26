@@ -50,7 +50,9 @@ is not the case, take a look at this [guide](http://www.ee.surrey.ac.uk/Teaching
 4. To test your application, run the manage.py file: `python manage.py runserver`, and open your web browser to
 `localhost:5000`.
 
-That's it! You are ready to start coding your project.
+![Home Page](https://dl.dropboxusercontent.com/u/30620269/insightfl.png)
+
+That's it! You are ready to start building your web application.
 
 ### Application Structure
 #### Philosophy
@@ -60,11 +62,11 @@ concerns more effectively. Instead of having all your web app code in one file, 
 smaller chunks, which makes for cleaner code and easier debugging.
 
 #### Project Layout
-- **app** - Where your Flask web application lives. This is where you'll spend the majority of your time
+- **[app](https://github.com/stormpython/insightfl/tree/develop/app)** - Where your Flask web application lives. This is where you'll spend the majority of your time
 - **.gitignore** - [Git ignore file](https://help.github.com/articles/ignoring-files)
 - **config.py** - Project configuration file for storing sensitive or dynamic settings, e.g. database settings 
 - **LICENSE.md** - Project license
-- **manage.py** - Entry point to your Flask application, click [here](http://flask-script.readthedocs.org/en/latest/) for more info.
+- **manage.py** - Entry point to your Flask application during development, click [here](http://flask-script.readthedocs.org/en/latest/) for more info.
 - **README.md** - You're looking at it! :)
 - **requirements.txt** - Tracks all your Python dependencies using [pip](http://pip.readthedocs.org/en/latest/user_guide.html#requirements-files)
 - **schema.sql** - Your SQL database schemas
