@@ -33,7 +33,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -51,14 +51,14 @@
           </ul>
         </div><!--/.nav-collapse -->
       </div>
-    </div>
+    </header>
 
     <!-- Main content injection point -->
-    <!-- Wrap content with <div id="wrap"><div>
+    <!-- Wrap content with <main id="wrap"><main>
           when using the footer block to push the footer down. -->
-    <div id="wrap">
+    <main id="wrap">
       {% block content %}{% endblock %}
-    </div>
+    </main>
 
     <!-- The footer is placed within its own block to render properly -->
     {% block footer %}{% endblock %}
