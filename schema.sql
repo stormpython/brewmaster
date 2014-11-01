@@ -44,8 +44,7 @@ CREATE TABLE IF NOT EXISTS styles (
   fg_max DECIMAL(4, 3) UNSIGNED NULL,
   create_date DATETIME NULL,
 
-  PRIMARY KEY (id),
-  FOREIGN KEY (category_id) REFERENCES categories(id)
+  PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = "utf8";
 
 
@@ -54,12 +53,12 @@ CREATE TABLE IF NOT EXISTS beer (
   name TINYTEXT NULL,
   description TEXT NULL,
   abv DECIMAL(3, 1) UNSIGNED NULL,
-  ibu TINYINT UNSIGNED NULL,
-  glassware_id TINYINT UNSIGNED NULL,
-  style_id TINYINT UNSIGNED NULL,
+  ibu INT UNSIGNED NULL,
+  glassware_id INT UNSIGNED NULL,
+  style_id INT UNSIGNED NULL,
   is_organic CHAR(1) NULL,
   food_pairings TEXT NULL,
-  original_gravity DECIMAL(4, 3) UNSIGNED NULL,
+  original_gravity INT UNSIGNED NULL,
   labels_icon TINYTEXT NULL,
   labels_medium TINYTEXT NULL,
   labels_large TINYTEXT NULL,
@@ -67,14 +66,11 @@ CREATE TABLE IF NOT EXISTS beer (
   serving_temperature_display TINYTEXT NULL,
   status TINYTEXT NULL,
   status_display TINYTEXT NULL,
-  available_id TINYINT UNSIGNED NULL,
-  beer_variation_id TINYINT UNSIGNED NULL,
+  available_id INT UNSIGNED NULL,
+  beer_variation_id TINYTEXT NULL,
   year YEAR(4) NULL,
   create_date DATETIME NULL,
   update_date DATETIME NULL,
 
-  PRIMARY KEY (id),
-  FOREIGN KEY (glassware_id) REFERENCES glassware(id),
-  FOREIGN KEY (style_id) REFERENCES styles(id),
-  FOREIGN KEY (available_id) REFERENCES availability(id)
+  PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = "utf8";
