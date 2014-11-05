@@ -4,6 +4,7 @@ def for_each(iterator, f, *args):
         f(item, *args)
 
 
+# Notes to come
 def create_kwargs(key, iterator, kwargs):
     if key in iterator:
         kwargs[key] = iterator[key]

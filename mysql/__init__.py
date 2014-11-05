@@ -44,16 +44,19 @@ class MySQL(object):
         cur = conn.cursor(pymysql.cursors.DictCursor)
         return cur
 
+    @staticmethod
     def before_request(self):
         ctx = _app_ctx_stack.top
         ctx.pymysql = self.connect()
 
-    def teardown_request(self, exception):
+    @staticmethod
+    def teardown_request():
         ctx = _app_ctx_stack.top
         if hasattr(ctx, "pymysql"):
             ctx.pymysql.close()
 
-    def get_db(self):
+    @staticmethod
+    def get_db():
         ctx = _app_ctx_stack.top
         if ctx is not None:
             return ctx.pymysql
