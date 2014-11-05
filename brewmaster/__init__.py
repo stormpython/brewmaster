@@ -1,20 +1,17 @@
 """
-Algorithm for brewmaster
+Algorithm for Brew Master
 
-1. Accepts a beer name as input.
-2. The beer name is used to query the beers database.
-
-**If the beer is already stored in the database**
-    3. The beer id is used to query the similar_beers database.
-    4. The list of similar beers are returned to the user in order of similarity based on rank.
-
-**If beer is not in database**
-    5. An api call is made to obtain the relevant information for the beer.
-    6. The results of the api call are saved in the beers database.
-    7. The characteristics of the beer are then used to obtain a list of beers with similar characteristics
-        through another api call.
-    8. The beer name the user entered + its characteristics and the list of similar beers + their characteristics
-        returned from the api call are run through the algorithm to determine the rank order.
-    9. The list of similar beers, characteristics, and rank are all saved in the similar_beers database.
-    10. The results of the algorithm are returned to the user in rank order.
+1. Accepts a search term, which is either a beer or brand, name as input.
+2. The search term is looked up in the beers database.
+3. If the beer is found in the database, returns a dict of beer attributes.
+4. Else, makes an API call to the BreweryDB beers endpoint.
+5. If the beer is found in the API database, returns a dict of beer attributes.
+6. The style_id and abv beer attributes are extracted from the beer dict.
+7. An API call is made to the beers endpoint with style_id and abv values to
+   obtain a list of similar beers. This list is returned as an list of dicts
+   for each beer.
+8. If the search term is not found, an API call is made to the search endpoint.
+9. If results are returned, the list of dicts for each beer is returned.
+10. Else, if no results are returned, "search term could not be found" is
+    returned.
 """
