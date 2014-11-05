@@ -41,7 +41,7 @@ class MySQL(object):
 
     def execute(self, query, args):
         conn = self.connect()
-        cur = conn.cursor()
+        cur = conn.cursor(pymysql.cursors.DictCursor)
         return cur.execute(query, args)
 
     def before_request(self):
