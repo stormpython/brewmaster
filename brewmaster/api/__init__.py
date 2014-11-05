@@ -2,14 +2,14 @@ import requests
 
 
 class API:
-    """API Base Class"""
+    """An API Base Class for making api requests"""
     def __init__(self, url, key):
         self.url = url
         self.__key = key
 
     def get(self, endpoint, params):
-        api_endpoint = self.url + '/' + endpoint
-        params['key'] = self.__key
+        api_endpoint = self.url + "/" + endpoint
+        params["key"] = self.__key
 
         results = requests.get(api_endpoint, params=params)
 
@@ -17,4 +17,4 @@ class API:
             return results
         else:
             # TODO: need a better solution here
-            print 'There was an error'
+            print "There was an error"
