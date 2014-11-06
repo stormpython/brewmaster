@@ -13,8 +13,15 @@ class API:
 
         results = requests.get(api_endpoint, params=params)
 
-        if results.status_code == 200:
+        if results.status_code == requests.codes.ok:
             return results
         else:
             # TODO: need a better solution here
+            # throw an error
             print "There was an error"
+
+    def get_json(self, endpoint, params):
+        results = self.get(endpoint, params)
+
+        if results.status_code == requests.codes.ok:
+            return results.json()
