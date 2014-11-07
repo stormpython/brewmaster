@@ -16,7 +16,8 @@
 # 6. If a beer is found above, the style_id and abv attributes are extracted
 #    from the dictionary of beer attributes.
 # 7. An API call is made to the beers endpoint with the style_id and abv
-#    attributes as parameters to obtain a list of similar beers.
+#    attributes as parameters to obtain a list of similar beers, which get
+#    returned to the user.
 #
 # SEARCH FOR BEER NAME OR BRAND NAME
 # 8. If a beer is not found in the first steps above, an API call is made to
