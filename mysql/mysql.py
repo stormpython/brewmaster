@@ -37,6 +37,7 @@ class MySQL(object):
             kwargs["db"] = self.app.config["MYSQL_DATABASE_DB"]
         if self.app.config["MYSQL_DATABASE_CHARSET"]:
             kwargs["charset"] = self.app.config["MYSQL_DATABASE_CHARSET"]
+        kwargs['autocommit'] = True
         return pymysql.connect(**kwargs)
 
     def cursor(self):

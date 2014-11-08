@@ -18,11 +18,6 @@ class Config:
     # For more information, see: http://www.brewerydb.com/developers/docs
     BREWERY_DB_API_URL = "http://api.brewerydb.com/v2"
     BREWERY_DB_API_KEY = os.environ.get("BREWERY_DB_API_KEY")
-    BREWERY_DB_API_LIMIT = 400
-
-    API_LIMIT_REACHED_MESSAGE = "We have reached our daily API request " \
-                                "limit. We are sorry for the inconvenience. " \
-                                "Please try again tomorrow."
 
     # BrewMaster Responses
     NOT_FOUND_RESPONSE = "The beer or brand name you entered was not found."
