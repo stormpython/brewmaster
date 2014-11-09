@@ -14,7 +14,8 @@ class BrewMaster:
         self.api_url = app.config["BREWERY_DB_API_URL"]
         self.api_key = app.config["BREWERY_DB_API_KEY"]
         self.brewery_db_api = API(self.api_url, self.api_key)
-        self.beer_endpoint = "beers"
+        self.name_endpoint = "beers"
+        self.id_endpoint = "beer/" + self.search_term if self.is_id is True else None
         self.search_endpoint = "search"
 
         # Not found response
@@ -33,9 +34,9 @@ class BrewMaster:
         params = {}
 
         if self.is_id is True:
-            endpoint = "beer/" + self.search_term
+            endpoint = self.id_endpoint
         else:
-            endpoint = self.beer_endpoint
+            endpoint = self.name_endpoint
             params["name"] = self.search_term
 
         results = self.call_api(endpoint, params)
@@ -88,7 +89,7 @@ class BrewMaster:
         else:
             return "No similar beers found"
 
-        beers = self.call_api(self.beer_endpoint, params)
+        beers = self.call_api(self.name_endpoint, params)
 
         return {
             "search_term": self.search_term,
