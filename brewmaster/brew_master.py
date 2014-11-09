@@ -15,7 +15,8 @@ class BrewMaster:
         self.api_key = app.config["BREWERY_DB_API_KEY"]
         self.brewery_db_api = API(self.api_url, self.api_key)
         self.name_endpoint = "beers"
-        self.id_endpoint = "beer/" + self.search_term if self.is_id is True else None
+        self.id_endpoint = "beer/" + self.search_term if self.is_id is True \
+            else None
         self.search_endpoint = "search"
 
         # Not found response
@@ -79,7 +80,8 @@ class BrewMaster:
             start_abv = None
 
         end_abv = start_abv + 1 if start_abv is not None else None
-        abv_range = str(start_abv) + "," + str(end_abv) if start_abv is not None else None
+        abv_range = str(start_abv) + "," + str(end_abv) if start_abv is not \
+            None else None
 
         if style_id is not None and abv_range is not None:
             params["styleId"] = style_id
