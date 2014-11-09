@@ -20,7 +20,8 @@ class Config:
     BREWERY_DB_API_KEY = os.environ.get("BREWERY_DB_API_KEY")
 
     # BrewMaster Responses
-    NOT_FOUND_RESPONSE = "The beer or brand name you entered was not found."
+    NO_BEER_FOUND = "The beer or brand name you entered was not found."
+    SIMILAR_BEERS_NOT_FOUND = "There were no similar beers found"
 
     @staticmethod
     def init_app(app):
