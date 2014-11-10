@@ -1,8 +1,4 @@
-from . import for_each, create_kwarg
-
-
-def create_beer_kwargs(beer):
-    kwargs = {}
+class BeerFields:
     fields = [
         "id",
         "name",
@@ -29,6 +25,3 @@ def create_beer_kwargs(beer):
         "createDate",
         "updateDate"
     ]
-
-    for_each(fields, create_kwarg, beer, kwargs)
-    return kwargs

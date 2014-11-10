@@ -1,6 +1,6 @@
 from app import app
 from api import API
-from helpers import lookup_beer, save_beer
+from database import lookup_beer, save_beer
 
 
 class BrewMaster:
