@@ -11,7 +11,7 @@ class BrewMaster:
         self.page = page
 
         # API settings
-        self.brewery_db_api = BreweryDB()
+        self.brewery_db = BreweryDB()
         self.name_endpoint = 'beers'
         self.search_endpoint = 'search'
 
@@ -31,7 +31,7 @@ class BrewMaster:
         beer = lookup_beer(self.search_term, self.is_id)
 
         if isinstance(beer, int) and beer == 0:
-            return self.brewery_db_api.get_beer(self.search_term, self.is_id)
+            return self.brewery_db.get_beer(self.search_term, self.is_id)
         elif len(beer) == 1:
             return beer[0]
         else:
@@ -62,7 +62,7 @@ class BrewMaster:
         self.view_results['abv_range'] = abv_range
         return abv_range
 
-    def get_similar_beers(self, beer):
+    def get_params(self, beer):
         params = {
             'withBreweries': 'Y',
             'p': self.page
@@ -78,14 +78,30 @@ class BrewMaster:
         if abv_range is not None:
             params['abv'] = abv_range
 
-        self.view_results['beers'] = self.brewery_db_api.\
+        return params
+
+    def get_similar_beers(self, beer):
+        params = self.get_params(beer)
+
+        api_results = self.brewery_db.\
             call_api(self.name_endpoint, params)
+
+        self.view_results['number_of_pages'] = api_results['numberOfPages'] \
+            if 'numberOfPages' in api_results else 0
+        self.view_results['beers'] = api_results['data'] \
+            if 'data' in api_results else api_results
+
         return self.view_results
 
     def search(self):
         params = {'q': self.search_term, 'type': 'beer'}
-        self.view_results['beers'] = self.brewery_db_api.\
-            call_api(self.search_endpoint, params)
+        api_results = self.brewery_db.call_api(self.search_endpoint, params)
+
+        self.view_results['number_of_pages'] = api_results['numberOfPages'] \
+            if 'numberOfPages' in api_results else 0
+        self.view_results['beers'] = api_results['data'] \
+            if 'data' in api_results else api_results
+
         return self.view_results
 
     def get_results(self):

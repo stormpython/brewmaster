@@ -33,7 +33,7 @@ class BreweryDB(API):
         results = self.call_api(endpoint, params)
 
         if 'data' in results and len(results['data']) == 1 \
-                or isinstance(results['data'], dict):
+                or 'data' in results and isinstance(results['data'], dict):
             beer = results['data'][0] if len(results['data']) == 1 \
                 else results['data']
             save_beer(beer)

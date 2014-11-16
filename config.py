@@ -11,7 +11,7 @@ class Config:
     MYSQL_DATABASE_PORT = 3306
     MYSQL_DATABASE_USER = os.environ.get('MYSQL_DATABASE_USER') or None
     MYSQL_DATABASE_PASSWORD = os.environ.get('MYSQL_DATABASE_PASSWORD') or None
-    MYSQL_DATABASE_DB = None
+    MYSQL_DATABASE_DB = os.environ.get('MYSQL_DATABASE_DB') or None
     MYSQL_DATABASE_CHARSET = 'utf8'
 
     # BreweryDB API URL and key
