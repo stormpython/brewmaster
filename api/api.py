@@ -2,7 +2,7 @@ import requests
 
 
 class API:
-    """An API Base Class for making api requests"""
+    """A base class for making api requests"""
     def __init__(self, url, key):
         self.url = url
         self.__key = key
@@ -12,15 +12,15 @@ class API:
         params = {} if params is None else params
         params['key'] = self.__key
 
-        try:
-            results = requests.get(api_endpoint, params=params)
+        results = requests.get(api_endpoint, params=params)
 
-            if results.status_code == requests.codes.ok:
-                return results
-        except requests.exceptions.RequestException as e:
-            print e
+        if results.status_code == requests.codes.ok:
+            return results
+        else:
+            # throw an error
+            results.raise_for_status()
 
-    def get_json(self, endpoint, params):
+    def get_json(self, endpoint, params=None):
         results = self.get(endpoint, params)
 
         if results.raise_for_status() is None:
