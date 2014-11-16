@@ -1,6 +1,6 @@
 from app import app
 from database import lookup_beer
-from brewmaster.brewerydb_api import BreweryDBApi
+from brewmaster.brewerydb import BreweryDB
 
 
 class BrewMaster:
@@ -11,7 +11,7 @@ class BrewMaster:
         self.page = page
 
         # API settings
-        self.brewery_db_api = BreweryDBApi()
+        self.brewery_db_api = BreweryDB()
         self.name_endpoint = 'beers'
         self.search_endpoint = 'search'
 
@@ -31,8 +31,7 @@ class BrewMaster:
         beer = lookup_beer(self.search_term, self.is_id)
 
         if isinstance(beer, int) and beer == 0:
-            return self.brewery_db_api.call_beer_api_endpoint(
-                self.search_term, self.is_id)
+            return self.brewery_db_api.get_beer(self.search_term, self.is_id)
         elif len(beer) == 1:
             return beer[0]
         else:

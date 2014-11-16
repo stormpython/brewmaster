@@ -7,21 +7,21 @@ url = app.config['BREWERY_DB_API_URL']
 key = app.config['BREWERY_DB_API_KEY']
 
 
-class BreweryDBApi(API):
+class BreweryDB(API):
 
     def __init__(self):
         API.__init__(self, url, key)
         self.beer_not_found = app.config['NO_BEER_FOUND']
 
     def call_api(self, endpoint, params):
-        results = self.get(endpoint, params).json()
+        results = self.get_json(endpoint, params)
 
         if 'data' in results:
-            return results['data']
+            return results
         else:
             return self.beer_not_found
 
-    def call_beer_api_endpoint(self, search_term, is_id):
+    def get_beer(self, search_term, is_id):
         params = {}
 
         if is_id is True:
@@ -32,8 +32,10 @@ class BreweryDBApi(API):
 
         results = self.call_api(endpoint, params)
 
-        if len(results) == 1 or isinstance(results, dict):
-            beer = results[0] if len(results) == 1 else results
+        if 'data' in results and len(results['data']) == 1 \
+                or isinstance(results['data'], dict):
+            beer = results['data'][0] if len(results['data']) == 1 \
+                else results['data']
             save_beer(beer)
             return beer
         else:
