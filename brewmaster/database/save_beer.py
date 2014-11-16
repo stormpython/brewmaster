@@ -4,7 +4,7 @@ from app import mysql
 
 
 def save_beer(beer):
-    fields = schemas["beer"].fields
+    fields = schemas['beer'].fields
     kwargs = for_each(fields, create_kwargs, beer, {})
     keys = tuple(key for key in kwargs.keys())
     values = tuple(value for value in kwargs.values())

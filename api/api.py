@@ -8,9 +8,9 @@ class API:
         self.__key = key
 
     def get(self, endpoint, params=None):
-        api_endpoint = self.url + "/" + endpoint
+        api_endpoint = self.url + '/' + endpoint
         params = {} if params is None else params
-        params["key"] = self.__key
+        params['key'] = self.__key
 
         try:
             results = requests.get(api_endpoint, params=params)
