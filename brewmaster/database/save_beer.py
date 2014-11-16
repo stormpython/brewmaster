@@ -5,18 +5,22 @@ from app import mysql
 
 def save_beer(beer):
     fields = schemas['beer'].fields
-    kwargs = for_each(fields, create_kwargs, beer, {})
-    keys = tuple(key for key in kwargs.keys())
-    values = tuple(value for value in kwargs.values())
+    kwargs = {}
+
+    # Create kwargs
+    for_each(fields, create_kwargs, beer, kwargs)
 
     query = """
-            INSERT INTO `beers` (%s, %s, %s, %s, %s, %s, %s, %s,
-                    %s, %s, %s, %s, %s, %s, %s, %s,
-                    %s, %s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO `beers` (id, name, description, abv, ibu,
+                glasswareId, glass, styleId, style, isOrganic,
+                foodPairings, originalGravity, labels,
+                servingTemperature, servingTemperatureDisplay, status,
+                statusDisplay, availableId, available, beerVariationId,
+                beerVariation, year, createDate, updateDate)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s, %s, %s);
             """
-    args = keys + values
+    args = tuple(kwargs[key] for key in fields)
 
     return mysql.query(query, args)
