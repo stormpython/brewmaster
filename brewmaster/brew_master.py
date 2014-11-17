@@ -23,6 +23,7 @@ class BrewMaster:
         self.view_results = {
             'is_id': self.is_id,
             'not_found': self.beer_not_found,
+            'no_similar_beers': self.similar_beers_not_found,
             'page': self.page,
             'search_term': self.search_term,
         }
@@ -73,7 +74,7 @@ class BrewMaster:
         if style_id is not None:
             params['styleId'] = style_id
         else:
-            return 'No similar beers found'
+            return self.similar_beers_not_found
 
         if abv_range is not None:
             params['abv'] = abv_range
@@ -82,6 +83,10 @@ class BrewMaster:
 
     def get_similar_beers(self, beer):
         params = self.get_params(beer)
+
+        if params == self.similar_beers_not_found:
+            self.view_results['beers'] = params
+            return self.view_results
 
         api_results = self.brewery_db.\
             call_api(self.name_endpoint, params)

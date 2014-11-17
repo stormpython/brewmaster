@@ -2,13 +2,34 @@
 
 {% block content %}
   <div class="container">
-    <div class="starter-template">
-      <h1>Bootstrap starter template</h1>
-      <p class="lead">
-        Use this document as a way to quickly start any new project.<br>
-        All you get is this text and a mostly barebones HTML document.
-      </p>
-    </div>
+    <form role="search">
+      <div class="col-sm-10 form-group">
+       <input type="text" class="form-control" name="search_term" placeholder="Enter beer or brand name"
+        {% if results.search_term %}
+          value="{{ results.search_term }}"
+        {% endif %}>
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+  </div>
+  <div>
+    {% if results.beers == results.not_found %}
+      <ul class="col-sm-10">{{ results.not_found }}</ul>
+    {% elif results.beers == results.no_similar_beers %}
+      <ul class="col-sm-10">{{ results.no_similar_beers }}</ul>
+    {% else %}
+      {% for beer in results.beers %}
+        {% if beer.name.lower() != results.search_term.lower() %}
+          <ul>
+            {% if 'labels' in beer %}
+              <img src="{{ beer.labels.medium }}"/>
+            {% endif %}
+            <div>{{ beer.name }}</div>
+            <div>{{ beer.description }}</div>
+          </ul>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
 {% endblock %}
 
