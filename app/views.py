@@ -12,10 +12,9 @@ def index():
     if search_term:
         brew = BrewMaster(search_term)
         results = brew.get_results()
-    else:
-        results = {'error': 'Please enter a beer or brand'}
+        return render_template('index.html', results=results)
 
-    return render_template('index.html', results=results)
+    return render_template('index.html')
 
 @app.route('/author')
 def author():
