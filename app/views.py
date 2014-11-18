@@ -16,6 +16,23 @@ def index():
 
     return render_template('index.html')
 
+
+# @app.route('/<beer_id>')
+# def get_beer_by_id(beer_id):
+#     brew = BrewMaster(beer_id, is_id=True)
+#     results = brew.get_results()
+#     return render_template('index.html', results=results)
+#
+#
+# @app.route('/<style_id>/<abv_range>/<page>', methods=['GET'])
+# def get_page(style_id, abv_range, page):
+#     search_term = request.args.get('search_term', None)
+#
+#     brew = BrewMaster(search_term, is_id=False, page=page)
+#     results = brew.get_page(style_id, abv_range)
+#     return render_template('index.html', results=results)
+
+
 @app.route('/author')
 def author():
     # Renders author.html.
