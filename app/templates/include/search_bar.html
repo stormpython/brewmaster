@@ -1,5 +1,5 @@
 <form class="row" role="search" {% if not results %} style="margin-top: 15%" {% endif %}>
-  <div {% if results %} class="col-md-3 input-group" {% else %} class="col-md-6 col-md-offset-3 input-group" {% endif %}>
+  <div {% if results %} class="col-md-6 input-group" {% else %} class="col-md-6 col-md-offset-3 input-group" {% endif %}>
     <input type="text" class="autocomplete form-control" name="search_term"
            placeholder="Enter beer or brand name"
            {% if results and results.search_term %}
