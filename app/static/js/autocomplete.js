@@ -32976,7 +32976,7 @@ var beerNames = [
 $(function () {
     $(".autocomplete").autocomplete({
         autoFocus: true,
-        minLength: 4,
+        minLength: 3,
         source: beerNames
     });
 });

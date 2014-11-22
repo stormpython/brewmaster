@@ -1,7 +1,12 @@
 -- MySQL schemas
+-- Keeping track of your MySQL schemas can help with automating adding tables
+-- to your MySQL database. Simply add the table schema below and use the import
+-- command to upload it to your database.
+
 -- To import your schemas into your database, run:
--- `mysql -u username -p database < schema.sql` from the project directory
--- where username is your MySQL username
+-- `mysql -u <username> -p <database> < schema.sql` from the project directory
+-- where <username> is your MySQL username and <database> is the MySQL
+-- database of interest.
 
 CREATE TABLE IF NOT EXISTS beers (
   id CHAR(6) NOT NULL,
