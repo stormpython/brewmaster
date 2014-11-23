@@ -2,10 +2,20 @@
 
 {% block content %}
   <div class="container">
-    {% include "include/search_bar.html" %}
-  </div>
-  <div class="container">
-    {% include "include/table.html" %}
+    <div class="row">
+      {% if not results %}
+      {% include "include/logo.html" %}
+      {% endif %}
+
+      {% include "include/search_bar.html" %}
+
+      {% if not results %}
+      {% include "include/well.html" %}
+      {% endif %}
+    </div>
+    <div class="row">
+      {% include "include/table.html" %}
+    </div>
   </div>
 {% endblock %}
 
