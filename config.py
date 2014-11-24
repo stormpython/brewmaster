@@ -7,8 +7,8 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
 
     # MySQL connection settings
-    MYSQL_DATABASE_HOST = 'localhost'
-    MYSQL_DATABASE_PORT = 3306
+    MYSQL_DATABASE_HOST = os.environ.get('MYSQL_DATABASE_HOST') or 'localhost'
+    MYSQL_DATABASE_PORT = os.environ.get('MYSQL_DATABASE_PORT') or 3306
     MYSQL_DATABASE_USER = os.environ.get('MYSQL_DATABASE_USER') or None
     MYSQL_DATABASE_PASSWORD = os.environ.get('MYSQL_DATABASE_PASSWORD') or None
     MYSQL_DATABASE_DB = os.environ.get('MYSQL_DATABASE_DB') or None
