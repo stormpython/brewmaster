@@ -1,6 +1,6 @@
 from api import API
 from app import app
-from database import save_beer
+from brewmaster.database import save_beer
 
 
 url = app.config['BREWERY_DB_API_URL']
