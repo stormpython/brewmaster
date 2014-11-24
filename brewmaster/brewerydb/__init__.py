@@ -1,1 +1,1 @@
-from brewery_db import BreweryDB
+from main import BreweryDB
