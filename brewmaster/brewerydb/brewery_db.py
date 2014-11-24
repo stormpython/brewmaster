@@ -39,4 +39,4 @@ class BreweryDB(API):
             save_beer(beer)
             return beer
         else:
-            return self.beer_not_found
+            return results
