@@ -1,1 +1,1 @@
-<img alt="BrewMaster" src="./app/static/images/brewmaster.png" width="200px" height="200px">
+<img alt="BrewMaster" src="./app/static/images/brewmaster.png" width="250" height="200px">
