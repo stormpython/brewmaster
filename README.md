@@ -1,1 +1,1 @@
-![logo](./app/static/images/brewmaster.png)
+![logo](./app/static/images/brewmaster.png =200x200)

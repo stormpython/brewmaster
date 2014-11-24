@@ -1,31 +1,46 @@
 {% if results %}
-<table class="table-responsive" style="padding: 30px;">
+<div class="col-md-10">
   {% if results.beers == results.not_found %}
-    <tr class="col-sm-10">
-      <td>{{ results.not_found }}</td>
-    </tr>
+  <div class="col-md-10">
+    <p>{{ results.not_found }}</p>
+  </div>
   {% elif results.beers == results.no_similar_beers %}
-    <tr class="col-sm-10">
-      <td>{{ results.no_similar_beers }}</td>
-    </tr>
+  <div class="col-md-10">
+    <p>{{ results.no_similar_beers }}</p>
+  </div>
   {% else %}
-    {% for beer in results.beers %}
-    <tr>
-      {% if beer.name.lower() != results.search_term.lower() %}
-        <td>
-          {% if 'labels' in beer %}
-            <img src="{{ beer.labels.icon }}"/>
-          {% endif %}
-        </td>
-        <td>
-          <div>{{ beer.name }}</div>
-        </td>
-        <td>
-          <div>{{ beer.description }}</div>
-        </td>
+
+  {% for beer in results.beers %}
+  {% if beer.name.lower() != results.search_term.lower() %}
+  <div class="row" style="padding-top: 5%;">
+    <div class="col-md-4">{{ beer.name }} </div>
+
+    {% if beer.style and beer.style.name %}
+      <div class="col-md-4">{{ beer.style.name }}</div>
+    {% endif %}
+
+    {% if beer.abv %}
+      <div class="col-md-1">{{ beer.abv }}%</div>
+    {% endif %}
+
+    {% if beer.ibu %}
+      <div class="col-md-1">{{ beer.ibu }}</div>
+    {% endif %}
+  </div>
+  <div class="row">
+    <!-- beer image -->
+    <div class="col-md-1">
+      {% if 'labels' in beer %}
+      <img src="{{ beer.labels.icon }}"/>
+      {% else %}
+      <img src="{{ url_for('static', filename='images/favicon.ico') }}"
+           width="60px" height="60px"/>
       {% endif %}
-    </tr>
-    {% endfor %}
+    </div>
+    <div class="col-md-9">{{ beer.description }}</div>
+    {% endif %}
+  </div>
+  {% endfor %}
   {% endif %}
-</table>
+</div>
 {% endif %}
