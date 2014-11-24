@@ -1,6 +1,6 @@
 from app import app
 from database import lookup_beer
-from brewmaster.brewerydb import BreweryDB
+from brewerydb import BreweryDB
 
 
 class BrewMaster:

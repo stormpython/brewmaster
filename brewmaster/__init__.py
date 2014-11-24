@@ -28,5 +28,5 @@
 # 10. If still no beer(s) are found, then the user receives a `Beer not found`
 #    message.
 
-from brew_master import BrewMaster
+from main import BrewMaster
 
