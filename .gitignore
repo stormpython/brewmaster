@@ -2,5 +2,4 @@
 venv/
 test/
 *.pyc
-.travis.yml
 app/static/js/autocomplete.js
