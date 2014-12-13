@@ -1,6 +1,5 @@
-<img alt="BrewMaster" src="./app/static/images/brewmaster.png" width="75" height="60px" align="left">
 # BrewMaster
-
+<img alt="BrewMaster" src="./app/static/images/brewmaster.png" width="75" height="60px" align="left">
 [BrewMaster]() is a web application that takes a beer name or brand as input and using a very simple 
 algorithm outputs a list of similar beers.
 
