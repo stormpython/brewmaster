@@ -1,5 +1,10 @@
 <img alt="BrewMaster" src="./app/static/images/brewmaster.png" width="250" height="200px">
 
+[BrewMaster]() is a web application that takes a beer name or brand as input and using a very simple 
+algorithm outputs a list of similar beers.
+
+<img alt="BrewMaster Index Page" src="./app/static/images/brewmaster_index.png">
+
 BrewMaster is an example Flask application created with [InsightFL](https://github.com/stormpython/insightfl), 
 a basic Flask template. Interested in learning how this app was created? Check out the [blog]() post. Or if you're 
 simply interested in the source code, follow the instructions below to fork the project.
