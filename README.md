@@ -1,7 +1,5 @@
 <img alt="BrewMaster" src="./app/static/images/brewmaster.png" width="250" height="200px">
 
-### Introduction
-
 ### Getting Started <a name="getting-started"></a>
 #### System Requirements <a name="system-requirements"></a>
 1. [Python](https://www.python.org/downloads/)(v2.7+) with [pip](http://pip.readthedocs.org/en/latest/installing.html) installed.
