@@ -1,4 +1,5 @@
 class BeerFields:
+    """MySQL schema fields for the beers table"""
     fields = [
         'id',
         'name',
