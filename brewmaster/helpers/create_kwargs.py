@@ -12,7 +12,7 @@ from pymysql import escape_string
 
 def create_kwargs(key, iterator, kwargs):
     """Callback function that returns a dictionary of keys with appropriately
-    modified value pairs.
+    modified values.
     """
     if key in iterator:
         value = iterator[key]
