@@ -1,5 +1,9 @@
 <img alt="BrewMaster" src="./app/static/images/brewmaster.png" width="250" height="200px">
 
+BrewMaster is an example Flask application created with [InsightFL](https://github.com/stormpython/insightfl), 
+a basic Flask template. Interested in learning how this app was created? Check out the [blog]() post. Or if you're 
+simply interested in the source code, follow the instructions below to fork the project.
+
 ### Getting Started <a name="getting-started"></a>
 #### System Requirements <a name="system-requirements"></a>
 1. [Python](https://www.python.org/downloads/)(v2.7+) with [pip](http://pip.readthedocs.org/en/latest/installing.html) installed.
