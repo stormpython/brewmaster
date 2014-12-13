@@ -4,6 +4,7 @@ from app import mysql
 
 
 def save_beer(beer):
+    """Saves a dictionary of beer attributes to the MySQL database"""
     fields = schemas['beer'].fields
     kwargs = {}
 
