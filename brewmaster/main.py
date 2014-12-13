@@ -4,7 +4,7 @@ from brewerydb import BreweryDB
 
 
 class BrewMaster:
-
+    """Main algorithm for the BrewMaster application"""
     def __init__(self, search_term, is_id=False, page=1):
         self.search_term = search_term
         self.is_id = is_id
@@ -29,6 +29,7 @@ class BrewMaster:
         }
 
     def get_beer(self):
+        """Returns a dictionary of beer attributes or a not found response"""
         beer = lookup_beer(self.search_term, self.is_id)
 
         if isinstance(beer, int) and beer == 0:
@@ -39,6 +40,7 @@ class BrewMaster:
             return self.beer_not_found
 
     def get_style_id(self, beer):
+        """Returns the beer style id if present or None"""
         if 'styleid' in beer and beer['styleid'] is not None:
             style_id = int(beer['styleid'])
             self.view_results['style_id'] = style_id
@@ -51,6 +53,7 @@ class BrewMaster:
             return None
 
     def get_abv_range(self, beer):
+        """Returns the beer abv range if present or None"""
         if 'abv' in beer and beer['abv'] is not None:
             start_abv = int(float(beer['abv']))
         else:
@@ -64,6 +67,7 @@ class BrewMaster:
         return abv_range
 
     def get_params(self, beer):
+        """Returns the BreweryDB API request params"""
         params = {
             'withBreweries': 'Y',
             'p': self.page
@@ -82,6 +86,7 @@ class BrewMaster:
         return params
 
     def get_similar_beers(self, beer):
+        """Returns a request response dictionary of similar beers"""
         params = self.get_params(beer)
 
         if params == self.similar_beers_not_found:
@@ -99,6 +104,9 @@ class BrewMaster:
         return self.view_results
 
     def search(self):
+        """Creates an API request to the BreweryDB search endpoint, adds the
+        response to the view results and returns the view results.
+        """
         params = {'q': self.search_term, 'type': 'beer'}
         api_results = self.brewery_db.call_api(self.search_endpoint, params)
 
@@ -110,6 +118,9 @@ class BrewMaster:
         return self.view_results
 
     def get_results(self):
+        """Returns a list of similar beers provided a valid input, else returns
+        a not found response.
+        """
         beer = self.get_beer()
         if beer == self.beer_not_found:
             return self.search()
