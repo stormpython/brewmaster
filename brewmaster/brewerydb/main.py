@@ -51,7 +51,7 @@ class BreweryDB(API):
                 else results['data']
             save_beer(beer)
             return beer
-        elif len(results['data']) > 1:
+        elif 'data' in results and len(results['data']) > 1:
             return self.beer_not_found
         else:
             return results
