@@ -42,9 +42,11 @@ class BreweryDB(API):
         # to user if beer is present. Else return the results from the API
         # request.
 
-        # If results['data'], results['data'] could be an array of dictionaries
-        # if using the `beers` endpoint or a dictionary if using the
-        # `beer/<beer_id>` endpoint.
+        # results['data'] could be an array of dictionaries if using the
+        # `beers` endpoint or a dictionary if using the `beer/<beer_id>`
+        # endpoint. Only 1 dictionary of beer attributes should be returned.
+        # If there are > 1 beer in the response, a beer not found response
+        # is returned.
         if 'data' in results and len(results['data']) == 1 \
                 or 'data' in results and isinstance(results['data'], dict):
             beer = results['data'][0] if len(results['data']) == 1 \
