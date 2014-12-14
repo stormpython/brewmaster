@@ -24,9 +24,8 @@ def index():
 #     return render_template('index.html', results=results)
 #
 #
-# @app.route('/<style_id>/<abv_range>/<page>', methods=['GET'])
-# def get_page(style_id, abv_range, page):
-#     search_term = request.args.get('search_term', None)
+# @app.route('/<search_term>/<style_id>/<abv_range>/<page>', methods=['GET'])
+# def get_page(search_term, style_id, abv_range, page):
 #
 #     brew = BrewMaster(search_term, is_id=False, page=page)
 #     results = brew.get_page(style_id, abv_range)
