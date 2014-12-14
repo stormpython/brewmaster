@@ -118,6 +118,7 @@ class BrewMaster:
         return self.view_results
 
     def get_page(self, style_id, abv_range):
+        """Returns a list of similar beers based on the page number"""
         params = {
             'styleId': style_id,
             'abv': abv_range,
