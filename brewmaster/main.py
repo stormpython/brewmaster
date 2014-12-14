@@ -117,6 +117,23 @@ class BrewMaster:
 
         return self.view_results
 
+    def get_page(self, style_id, abv_range):
+        params = {
+            'styleId': style_id,
+            'abv': abv_range,
+            'withBreweries': 'Y',
+            'p': self.page
+        }
+
+        api_results = self.brewery_db.call_api(self.name_endpoint, params)
+
+        self.view_results['number_of_pages'] = api_results['numberOfPages'] \
+            if 'numberOfPages' in api_results else 0
+        self.view_results['beers'] = api_results['data'] \
+            if 'data' in api_results else api_results
+
+        return self.view_results
+
     def get_results(self):
         """Returns a list of similar beers provided a valid input, else returns
         a not found response.
